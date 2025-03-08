@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 06:18:45 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/11/08 04:30:58 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:09:44 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-static int	ft_format(va_list print, const char str)
+static int	ft_format(va_list print, char str)
 {
 	int	a;
 
@@ -39,7 +39,7 @@ static int	ft_format(va_list print, const char str)
 	return (a);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(char *str, ...)
 {
 	int		a;
 	int		b;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:42:02 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/22 14:39:13 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:09:44 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(char *s, int c)
 {
 	int				a;
 	char			*str;
@@ -37,7 +37,7 @@ char	*ft_strrchr(const char *s, int c)
 }
 // int main(void)
 // {
-// 	const char str[] = "jbbbbbbbb";
+// 	char str[] = "jbbbbbbbb";
 // 	printf("%s", ft_strrchr(str, 'j'));
 // 	return(0);
 // }

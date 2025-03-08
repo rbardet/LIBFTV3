@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 04:53:18 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/22 13:35:14 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:09:44 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 }
 // int main(void)
 // {
-// 	const char str[] = "LILLE OSC";
+// 	char str[] = "LILLE OSC";
 // 	printf("%p", ft_memchr(str, ' ', 100));
 // 	return(0);
 // }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 09:30:39 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/23 08:17:16 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:09:44 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(char *big, char *little, size_t len)
 {
 	size_t	a;
 	size_t	b;
@@ -39,8 +39,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 // int main(void)
 // {
-// 	const char big[] = "LILLE OSC";
-// 	const char little[] = "ILL";
+// 	char big[] = "LILLE OSC";
+// 	char little[] = "ILL";
 // 	printf("%s\n", ft_strnstr(big, little, 4));
 // 	return(0);
 // }

@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   print_tab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:41:05 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/24 05:27:40 by rbardet-         ###   ########.fr       */
+/*   Created: 2025/02/26 08:07:23 by throbert          #+#    #+#             */
+/*   Updated: 2025/03/06 16:18:49 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-size_t	ft_strlen(char *s)
+void	printab(char *fmt, char **tab)
 {
-	int	a;
+	int	i;
 
-	if (!s)
-		return (0);
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
+	i = 0;
+	while (tab && tab[i])
+	{
+		printf("[%d] : ", i);
+		printf(fmt, tab[i]);
+		printf("\n");
+		i++;
+	}
 }
-// int main(void)
-// {
-// 	printf("%d", ft_strlen("Losc"));
-// 	return(0);
-// }

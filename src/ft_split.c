@@ -3,89 +3,108 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:46:00 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/01/27 17:17:33 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/23 16:33:24 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static int	est_dans_charset2(char c, char *charset)
 {
-	int		count;
-	int		i;
+	int	i;
 
 	i = 0;
-	count = 0;
-	while (s[i])
+	while (charset[i])
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c && s[i])
-			count++;
-		while (s[i] != c && s[i])
-			i++;
-	}
-	return (count);
-}
-
-static void	ft_free_tab(char **tab)
-{
-	char	**pos;
-
-	if (tab == NULL)
-		return ;
-	pos = tab;
-	while (*pos != NULL)
-		free(*(pos++));
-	free(tab);
-}
-
-static char	*ft_str(char const *s, char c)
-{
-	int		i;
-	char	*ptr;
-
-	i = 0;
-	while (s[i] && s[i] != c)
+		if (c == charset[i])
+			return (1);
 		i++;
-	ptr = malloc(sizeof(char) * (i + 1));
-	if (!(ptr))
-	{
-		free(ptr);
-		return (NULL);
 	}
-	ft_strlcpy(ptr, s, i + 1);
-	return (ptr);
+	return (0);
 }
 
-char	**ft_split(char const *s, char c)
+static char	*copier_mot(char *str, int debut, int fin)
 {
+	char	*mot;
 	int		i;
-	int		strs_len;
-	char	**ptr;
 
-	if (!s)
-		return (0);
-	strs_len = count_words(s, c);
-	ptr = ft_calloc(sizeof(char *), (strs_len + 1));
-	if (!(ptr))
+	mot = malloc((fin - debut + 1) * sizeof(char));
+	if (!mot)
 		return (NULL);
-	i = -1;
-	while (++i < strs_len)
+	i = 0;
+	while (debut < fin)
 	{
-		while (s[0] == c)
-			s++;
-		ptr[i] = ft_str(s, c);
-		if (!(ptr[i]))
-		{
-			ft_free_tab(ptr);
-			return (NULL);
-		}
-		s += ft_strlen(ptr[i]);
+		mot[i] = str[debut];
+		i++;
+		debut++;
 	}
-	ptr[i] = 0;
-	return (ptr);
+	mot[i] = '\0';
+	return (mot);
+}
+
+static void	*free_tableau(char **tab, int k)
+{
+	while (k > 0)
+	{
+		k--;
+		free(tab[k]);
+	}
+	free(tab);
+	return (NULL);
+}
+
+static char	**allouer_add_tab(char *str, char *c, int nb_mot, char **tab)
+{
+	int	i;
+	int	k;
+	int	debut;
+
+	i = 0;
+	k = 0;
+	while (str[i] && k < nb_mot)
+	{
+		while (str[i] && est_dans_charset2(str[i], c))
+			i++;
+		debut = i;
+		while (str[i] && !est_dans_charset2(str[i], c))
+			i++;
+		if (i > debut)
+		{
+			tab[k] = copier_mot(str, debut, i);
+			if (!tab[k])
+				return (free_tableau(tab, k));
+			k++;
+		}
+	}
+	tab[k] = NULL;
+	return (tab);
+}
+
+char	**ft_split(char *str, char charset)
+{
+	int		nb_mots;
+	char	tmp[2];
+	char	**tableau;
+	int		i;
+
+	tmp[0] = charset;
+	tmp[1] = '\0';
+	i = 0;
+	nb_mots = 0;
+	while (str[i])
+	{
+		if (!est_dans_charset2(str[i], tmp))
+		{
+			if (i == 0 || est_dans_charset2(str[i - 1], tmp))
+				nb_mots++;
+		}
+		i++;
+	}
+	tableau = malloc((nb_mots + 1) * sizeof(char *));
+	if (!tableau)
+		return (NULL);
+	return (allouer_add_tab(str, tmp, nb_mots, tableau));
 }

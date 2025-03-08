@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:13:41 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/22 14:42:24 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/23 18:15:06 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_strleng(const char *s)
-{
-	int	a;
-
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
-}
 
 char	*ft_subsubstr(int start, size_t len, char *source, char *str)
 {
@@ -45,35 +35,35 @@ char	*ft_subsubstr(int start, size_t len, char *source, char *str)
 	return (str);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
-	char			*source;
-	char			*str;
-	int				a;
-	int unsigned	b;
+	size_t	slen;
+	size_t	i;
+	char	*res;
 
-	a = 0;
-	b = ft_strleng(s);
-	source = (char *)s;
-	if (start >= b)
-	{
-		str = malloc(1);
-		if (!str)
-			return (NULL);
-		str[a] = '\0';
-		return (str);
-	}
-	if (len > b - start)
-		len = b - start;
-	str = malloc(sizeof(char) *(len + 1));
-	if (!str)
+	if (!s)
 		return (NULL);
-	str = ft_subsubstr(start, len, source, str);
-	return (str);
+	slen = ft_strlen(s);
+	if (start >= slen)
+		return (ft_strdup(""));
+	if (len > slen - start)
+		len = slen - start;
+	res = malloc(len + 1);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		res[i] = s[start + i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
+
 // int main(void)
 // {
-// 	char const str1[] = "Lille OSC";
+// 	char str1[] = "Lille OSC";
 // 	printf("%s", ft_substr(str1, 0, 5));
 // 	return(0);
 // }

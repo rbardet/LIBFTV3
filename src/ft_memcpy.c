@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 07:22:27 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/22 14:40:47 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:12:13 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char const		*src1;
-	char			*dest1;
-	size_t			a;
+	char	*src1;
+	char	*dest1;
+	size_t	a;
 
 	if ((src == NULL) && (dest == NULL))
 		return (NULL);
-	src1 = (char *) src;
-	dest1 = (char *) dest;
+	src1 = (char *)src;
+	dest1 = (char *)dest;
 	a = 0;
 	while (n != 0)
 	{

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   copy_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:41:05 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/24 05:27:40 by rbardet-         ###   ########.fr       */
+/*   Created: 2025/03/08 13:31:16 by rbardet-          #+#    #+#             */
+/*   Updated: 2025/03/08 13:33:33 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *s)
+char	**copy_tab(char **src)
 {
-	int	a;
+	char	**copy;
+	int		i;
 
-	if (!s)
-		return (0);
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
+	i = 0;
+	if (!src || !src[0])
+		return (NULL);
+	copy = malloc(sizeof(char *) * (tab_size(src) + 1));
+	while (src[i])
+	{
+		copy[i] = ft_strdup(src[i]);
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
 }
-// int main(void)
-// {
-// 	printf("%d", ft_strlen("Losc"));
-// 	return(0);
-// }

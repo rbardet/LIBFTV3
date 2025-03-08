@@ -1,108 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim_fixed.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ...                                                           +#+ 
+	+:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:27:55 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/22 14:36:01 by rbardet-         ###   ########.fr       */
+/*   Created: 2025/02/17 15:55:00 by ...               #+#    #+#             */
+/*   Updated: 2025/02/17 15:55:00 by ...              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strleng(const char *s)
-{
-	int	a;
+/*
+** Corrige le out-of-bounds si la chaîne est vide
+** ou si on recule trop. Pas de for/ternaire, max 25 lignes,
+** max 80 chars/ligne, 5 variables max.
+*/
 
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
+static int	is_in_set(char c, char *set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-static int	ft_find_d(char const *str1, char const *set)
+char	*ft_strtrim(char *s, char *set)
 {
-	char	*str2;
-	char	*set1;
-	int		a;
-	int		b;
+	int		start;
+	int		end;
+	int		len;
+	char	*res;
 
-	str2 = (char *) str1;
-	set1 = (char *) set;
-	a = 0;
-	b = 0;
-	while (set1[b] != '\0')
-	{
-		if (str2[a] == set1[b])
-		{
-			a++;
-			b = 0;
-		}
-		else
-			b++;
-	}
-	return (a);
-}
-
-static int	ft_find_f(char const *str1, char const *set)
-{
-	char	*str2;
-	char	*set1;
-	int		b;
-	int		a;
-
-	str2 = (char *) str1;
-	set1 = (char *) set;
-	b = ft_strleng(str1) - 1;
-	a = 0;
-	while (set1[a] != '\0')
-	{
-		if (str2[b] == set1[a])
-		{
-			b--;
-			a = 0;
-		}
-		else
-			a++;
-	}
-	return (b + 1);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	int		a;
-	int		b;
-	int		c;
-	int		longueur;
-	char	*s2;
-
-	a = ft_find_d(s1, set);
-	b = ft_find_f(s1, set);
-	c = 0;
-	longueur = b - a;
-	if (a >= b)
-	{
-		s2 = malloc(1);
-		if (!s2)
-			return (NULL);
-		s2[0] = '\0';
-		return (s2);
-	}
-	s2 = malloc(sizeof(char) * (longueur + 1));
-	if (!s2)
+	if (!s || !set)
 		return (NULL);
-	while (a < b)
-		s2[c++] = s1[a++];
-	s2[c] = '\0';
-	return (s2);
+	start = 0;
+	while (s[start] && is_in_set(s[start], set))
+		start++;
+	end = ft_strlen(s);
+	while (end > start && is_in_set(s[end - 1], set))
+		end--;
+	len = end - start;
+	if (len <= 0)
+		return (ft_strdup(""));
+	res = ft_substr(s, start, len);
+	return (res);
 }
-
-// int main(void)
-// {
-// 	char const str[] = "";
-// 	char set[] = "cdef";
-// 	printf("%s", ft_strtrim(str, set));
-// 	return(0);
-// }

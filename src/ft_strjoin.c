@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 07:45:34 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/22 14:37:45 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:11:45 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strleng(const char *s)
+static int	ft_strleng(char *s)
 {
 	int	a;
 
@@ -32,7 +32,7 @@ static int	ft_strleng(const char *s)
 // 	return (str);
 // }
 
-char	*ft_subjoin(char const *s1, char const *s2, char *s3)
+char	*ft_subjoin(char *s1, char *s2, char *s3)
 {
 	int		c;
 	int		d;
@@ -53,7 +53,7 @@ char	*ft_subjoin(char const *s1, char const *s2, char *s3)
 	return (s3);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*s3;
 	int		a;
@@ -71,8 +71,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 }
 // int main(void)
 // {
-// 	char const str1[] = "LILLE";
-// 	char const str2[] = " OSC";
+// 	char str1[] = "LILLE";
+// 	char str2[] = " OSC";
 // 	printf("%s", ft_strjoin(str1, str2));
 // 	return(0);
 // }

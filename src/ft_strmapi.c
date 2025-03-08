@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 07:18:45 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/23 08:15:30 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:11:45 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strleng(const char *s)
+int	ft_strleng(char *s)
 {
 	int	a;
 
@@ -22,12 +22,12 @@ int	ft_strleng(const char *s)
 	return (a);
 }
 
-// static char	ft_fonction(unsigned int a, char const b)
+// static char	ft_fonction(unsigned int a, char b)
 // {
 // 	return (a + b);
 // }
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char *s, char (*f)(unsigned int, char))
 {
 	unsigned int	a;
 	int				longueur;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 05:06:11 by rbardet-          #+#    #+#             */
-/*   Updated: 2024/10/22 14:38:56 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:09:44 by throbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	char			*str;
 	char unsigned	c1;
@@ -31,7 +31,7 @@ char	*ft_strchr(const char *s, int c)
 }
 // int main(void)
 // {
-// 	const char str[] = "there is so \0ma\0ny \0 \\0 in t\0his stri\0n";
+// 	char str[] = "there is so \0ma\0ny \0 \\0 in t\0his stri\0n";
 // 	printf("%s", ft_strchr(str, '\0'));
 // 	return(0);
 // }
